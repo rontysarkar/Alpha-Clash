@@ -22,11 +22,11 @@
         class="home min-h-screen text-white flex justify-center items-center"
       >
         <div class="flex flex-col items-center gap-10">
-          <h1 class="text-8xl font-anton">ALPHABET CLASH</h1>
+          <h1 class="text-8xl font-anton text-center">ALPHABET CLASH</h1>
           <p>Unleash Your Keyboard Kung Fu : Press “Enter” to Play</p>
           <button
             onclick="play()"
-            class="btn text-black text-2xl bg-white px-8"
+            class="btn text-black text-2xl bg-orange-500 text-white px-8"
           >
             Play
           </button>
@@ -91,31 +91,35 @@
             </div>
           </div>
           <div class="flex justify-between w-3/5">
-            <button class="btn rounded-full bg-[#894189] px-4">
+            <button class="btn rounded-full bg-[#894189] px-4 text-white">
               Life
               <img src="images/heart.svg.svg" alt="" />
-              <span>1</span>
+              <span id="current-life" class="text-2xl">5</span>
             </button>
-            <button class="btn rounded-full bg-[#360490] px-4">
+            <button class="btn rounded-full bg-[#360490] px-4 text-white">
               Score
               <img src="images/heart2.svg.svg" alt="" />
-              <span>1</span>
+              <span id="current-score" class="text-2xl">0</span>
             </button>
           </div>
         </div>
       </section>
       <!-- final score -->
       <section
-        class="playground-end flex justify-center items-center min-h-screen hidden"
+        id="final-score"
+        class="flex justify-center items-center min-h-screen hidden"
       >
         <div
           class="text-white text-center space-y-6 bg-[#FFFFFF33] p-10 rounded-xl"
         >
+          <h1 class="text-5xl font-extrabold text-orange-400">Game Over</h1>
           <h1 class="text-8xl">
             <span class="font-bold">Score :</span>
-            <span>14</span>
+            <span id="last-score">14</span>
           </h1>
-          <button class="btn">Play Now</button>
+          <button onclick="play()" class="btn text-white bg-orange-500">
+            Play Again
+          </button>
           <p>Practice will make you Pro</p>
         </div>
       </section>
