@@ -1,5 +1,13 @@
+const audio = new Audio();
+let inGame = false;
+
+
+audio.src = "../audio/success.mp3";
+audio.play();
+console.log(audio)
 function keyEvent(event) {
   const playerPressed = event.key.toLowerCase();
+  if(inGame == false) return;
   if (playerPressed === "escape") {
     gameOver();
   }
@@ -8,6 +16,9 @@ function keyEvent(event) {
   const currentAlphabet = document.getElementById("current-alphabet");
   const expected = currentAlphabet.innerText.toLowerCase();
   if (expected === playerPressed) {
+    
+    audio.src = "../audio/success.mp3";
+    audio.play();
     const value = getTextElementById("current-score");
     const newScore = value + 1;
     setTextElementById("current-score", newScore);
@@ -15,6 +26,8 @@ function keyEvent(event) {
     removeBackgroundColor(playerPressed);
     contunueGame();
   } else {
+    audio.src = "../audio/wrong.mp3";
+    audio.play();
     const value = getTextElementById("current-life");
     const newLife = value - 1;
     setTextElementById("current-life", newLife);
@@ -38,6 +51,7 @@ function contunueGame() {
 }
 
 function play() {
+  inGame = true;
   hiddenElement("home-section");
   hiddenElement("final-score");
   showElement("playground-section");
@@ -46,6 +60,7 @@ function play() {
   setTextElementById("current-score", 0);
 
   contunueGame();
+  
 }
 
 function gameOver() {
@@ -56,4 +71,5 @@ function gameOver() {
   const lastScoreElement = document.getElementById("current-score");
   const lastScore = lastScoreElement.innerText;
   setTextElementById("last-score", lastScore);
+  inGame = false;
 }
